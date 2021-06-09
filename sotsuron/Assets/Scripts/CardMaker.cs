@@ -13,17 +13,21 @@ public class CardMaker : MonoBehaviour
     [SerializeField] GameObject techType = null;
     [SerializeField] GameObject condition = null;
     [SerializeField] GameObject target = null;
+    [SerializeField] GameObject angleDD = null;
+    [SerializeField] GameObject angletoggle = null;
 
+    //Prefab
     [SerializeField] GameObject inputPanel = null;
     [SerializeField] GameObject DDPanel = null;
-    
+
     [SerializeField] List<string> techTypelist = null;
     [SerializeField] List<string> conditionlist = null;
     [SerializeField] List<string> targetlist = null;
+    [SerializeField] List<string> arealist = null;
 
     [SerializeField] Toggle[] Areas = null;
+
     int areaID;
-    bool call = false;
     Card card;
     // Start is called before the first frame update
     void Start()
@@ -71,7 +75,9 @@ public class CardMaker : MonoBehaviour
                     obj = Instantiate(DDPanel, target.transform);
                     obj.name = "param" + (i+ card.paramlength +1).ToString();
                     OptionsChange(obj.transform.Find("Dropdown").GetComponent<Dropdown>(), targetlist);
+                    arealist.Add((i+1+card.paramlength).ToString());   
                 }
+
             }
             else
             {
@@ -82,8 +88,15 @@ public class CardMaker : MonoBehaviour
                     Destroy(techType.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
                     Destroy(condition.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
                     Destroy(target.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
+                    Destroy(target.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
+                    arealist.Remove((card.paramlength - i).ToString());
                 }
             }
+            foreach (string s in arealist) 
+            {
+                Debug.Log("エリアリスト"+s);
+            }
+            OptionsChange(angleDD.GetComponent<Dropdown>(),arealist);
             card.paramlength = length;
         }
     }
@@ -92,54 +105,75 @@ public class CardMaker : MonoBehaviour
         obj.ClearOptions();
         obj.AddOptions(list);
     }
-    public void pushAreaChange()
-    {
-        if (!call)
-        {
 
-        }
-    }
     public void GetArea()
     {
-        
         areaID = 0;
         for (int i = 0;i<Areas.Length;i++)
         {
-            int deb = 0;
             if (Areas[i].isOn)
             {
                 areaID += (int)Math.Pow(2, i);
-                deb = i;
             }           
         }
-        Debug.Log(areaID);
-        PlayerPrefs.SetInt("AREAID",areaID);
-        SetArea();
+        DebugArea(areaID);
     }
-    public void SetArea()
+
+    public void PushAreaSelect()
+    {
+
+    }
+
+    public void AngleChanged()
+    {
+
+    }
+    public void TargetSelected()
+    {
+        
+    }
+    public void SetParam()
+    {
+
+    }
+    public void SetSubParam()
+    {
+
+    }
+    public void SetType()
+    {
+
+    }
+    public void SetCondition()
+    {
+
+    }
+    public void SetTarget()
+    {
+
+    }
+    public void DebugArea(int areaID)
     {
         string str = "";
         int count = 0;
-        areaID = PlayerPrefs.GetInt("AREAID");
-        for(int i = 131072; i > 0; i /= 2)
+        for (int i = 131072; i > 0; i /= 2)
         {
             count++;
-            if(areaID - i > 0)
+            if (areaID - i > 0)
             {
                 str += "  " + ((Data.AreaIDs)Enum.ToObject(typeof(Data.AreaIDs), i)).ToString();
                 areaID -= i;
             }
-            else if(areaID -i == 0)
+            else if (areaID - i == 0)
             {
                 str += "  " + ((Data.AreaIDs)Enum.ToObject(typeof(Data.AreaIDs), i)).ToString();
                 i = -1;
             }
-            if(count %3 == 0)
+            if (count % 3 == 0)
             {
                 str += "\n";
             }
         }
         Debug.Log(str);
     }
-    
 }
