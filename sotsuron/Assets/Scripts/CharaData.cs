@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace Data
 {
-    public class CharaData :MonoBehaviour
+    [Serializable]
+    public class CharaData : MonoBehaviour
     {
         //HP
         public int hp;
         //攻撃力
-        public int atk;            
+        public int atk;
         //防御力
         public int df;
         //スピード
@@ -24,12 +26,13 @@ namespace Data
         public Elements element;
 
     }
+    [Serializable]
     public class Decks
     {
-        public Dictionary<int,Card> cards;
+        public Dictionary<int, Card> cards;
     }
 
-    
+
     public enum Elements
     {
         FIRE,   //炎
@@ -63,39 +66,24 @@ namespace Data
     //ターゲットの種類
     public enum Targets
     {
-        ALLY,           //味方一人
-        ALLIES,         //味方複数
-        ALLALLIES,      //味方全員
-        RANDOMALLYS,    //ランダムな味方
-        ENEMY,          //敵一人
-        ENEMYS,         //敵複数人
-        ALLENEMYS,      //敵全員
-        RANDOMENEMYS,   //ランダムな敵の数
-        AREA,           //特定エリア
-        RANDOMAREA,     //ランダムのエリア
-        ALLYAREA,       //味方エリア全体
-        ENEMYAREA,      //敵エリア全体
-        ALLAREA,        //エリア全体
+        ALLY,          
+        ALLIES,         
+        ALLALLIES,      
+        RANDOMALLYS,    
+        ENEMY,         
+        ENEMYS,        
+        ALLENEMYS,      
+        RANDOMENEMYS,   
+        AREA,           
+        RANDOMAREA,    
+        ALLYAREA,       
+        ENEMYAREA,      
+        ALLAREA,        
     }
-    public enum AreaIDs
+    public enum Areatype
     {
-        ALLYUPPERLEFT = 1,
-        ALLYUPPERCENTER = 2,
-        ALLYUPPERRIGHT = 4,
-        ENEMYUPPERLEFT = 8,
-        ENEMYUPPERCENTER = 16,
-        ENEMYUPPERRIGHT = 32,
-        ALLYMIDDLELEFT = 64,
-        ALLYMIDDLECENTER = 128,
-        ALLYMIDDLERIGHT = 256,
-        ENEMYMIDDLELEFT = 512,
-        ENEMYMIDDLECENTER = 1024,
-        ENEMYMIDDLERIGHT = 2048,
-        ALLYLOWERLEFT = 4096,
-        ALLYLOWERCENTER = 8192,
-        ALLYLOWERRIGHT = 16384,
-        ENEMYLOWERLEFT = 32768,
-        ENEMYLOWERCENTER = 65536,
-        ENEMYLOWERRIGHT = 131072,
+        UPPER,
+        MIDDLE,
+        LOWER
     }
 }

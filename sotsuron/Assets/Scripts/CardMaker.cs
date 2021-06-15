@@ -51,7 +51,6 @@ public class CardMaker : MonoBehaviour
             //cardの長さを変更する
             card.param = new int[length];
             card.subparam = new int[length];
-            card.areaID = new int[length];
             card.type = new Data.TechType[length];
             card.con = new Data.Conditions[length];
             card.target = new Data.Targets[length];
@@ -108,15 +107,24 @@ public class CardMaker : MonoBehaviour
 
     public void GetArea()
     {
+        int height = 0;
         areaID = 0;
-        for (int i = 0;i<Areas.Length;i++)
+        for (int i = 0;i< Areas.Length; i++)
         {
+            if (i % 6 == 0 && i!=0)
+            {
+                height = i / 6;
+            }
             if (Areas[i].isOn)
             {
-                areaID += (int)Math.Pow(2, i);
-            }           
+                card.areaID[height, i % 6] = 1;
+            }
+            else
+            {
+                card.areaID[height, i % 6] = 0;
+            }            
         }
-        DebugArea(areaID);
+        DebugArea(card.areaID);
     }
 
     public void PushAreaSelect()
@@ -152,28 +160,16 @@ public class CardMaker : MonoBehaviour
     {
 
     }
-    public void DebugArea(int areaID)
+    public void DebugArea(int[,] areaID)
     {
-        string str = "";
-        int count = 0;
-        for (int i = 131072; i > 0; i /= 2)
+        for (int i = 0; i< areaID.GetLength(0); i++)
         {
-            count++;
-            if (areaID - i > 0)
+            string str = "";
+            for (int j = 0; j < areaID.GetLength(1); j++)
             {
-                str += "  " + ((Data.AreaIDs)Enum.ToObject(typeof(Data.AreaIDs), i)).ToString();
-                areaID -= i;
+                str +="\t"+ areaID[i, j];
             }
-            else if (areaID - i == 0)
-            {
-                str += "  " + ((Data.AreaIDs)Enum.ToObject(typeof(Data.AreaIDs), i)).ToString();
-                i = -1;
-            }
-            if (count % 3 == 0)
-            {
-                str += "\n";
-            }
+            Debug.Log(str);
         }
-        Debug.Log(str);
     }
 }
