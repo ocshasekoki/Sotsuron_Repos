@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class CardMaker : MonoBehaviour
 {
-    [SerializeField] GameObject cardnameIF = null;
-    [SerializeField] GameObject paramlengthIF = null;
-    [SerializeField] GameObject elementDD = null;
+    [SerializeField] Text cardnameIF = null;
+    [SerializeField] Text paramlengthDD = null;
+    [SerializeField] Text elementDD = null;
     [SerializeField] GameObject param = null;
     [SerializeField] GameObject subParam = null;
     [SerializeField] GameObject techType = null;
     [SerializeField] GameObject condition = null;
     [SerializeField] GameObject target = null;
-    [SerializeField] GameObject angleDD = null;
-    [SerializeField] GameObject angletoggle = null;
+    [SerializeField] Dropdown angleDD = null;
+    [SerializeField] Toggle angletoggle = null;
 
     //Prefab
     [SerializeField] GameObject inputPanel = null;
@@ -26,9 +26,8 @@ public class CardMaker : MonoBehaviour
     [SerializeField] List<string> arealist = null;
 
     [SerializeField] Toggle[] Areas = null;
-
-    int areaID;
-    Card card;
+    int paraindex;
+    private Card card;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +43,7 @@ public class CardMaker : MonoBehaviour
     public void ChangeValue()
     {
         //パラメータ数の読み込み
-        int length =int.Parse(paramlengthIF.transform.Find("Label").GetComponent<Text>().text);
+        int length =int.Parse(paramlengthDD.text);
         Debug.Log(length);
         if (card.paramlength != length)
         {
@@ -87,7 +86,6 @@ public class CardMaker : MonoBehaviour
                     Destroy(techType.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
                     Destroy(condition.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
                     Destroy(target.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
-                    Destroy(target.transform.Find("param" + (card.paramlength - i).ToString()).gameObject);
                     arealist.Remove((card.paramlength - i).ToString());
                 }
             }
@@ -95,20 +93,26 @@ public class CardMaker : MonoBehaviour
             {
                 Debug.Log("エリアリスト"+s);
             }
-            OptionsChange(angleDD.GetComponent<Dropdown>(),arealist);
+            OptionsChange(angleDD,arealist);
             card.paramlength = length;
         }
     }
     void OptionsChange(Dropdown obj,List<string> list)
     {
-        obj.ClearOptions();
-        obj.AddOptions(list);
+        try
+        {
+            obj.ClearOptions();
+        }catch(Exception e)
+        {
+            Debug.LogError(list.ToString());
+            Debug.LogError(e);
+        }
+            obj.AddOptions(list);
     }
 
     public void GetArea()
     {
         int height = 0;
-        areaID = 0;
         for (int i = 0;i< Areas.Length; i++)
         {
             if (i % 6 == 0 && i!=0)
@@ -127,14 +131,11 @@ public class CardMaker : MonoBehaviour
         DebugArea(card.areaID);
     }
 
-    public void PushAreaSelect()
-    {
-
-    }
-
     public void AngleChanged()
     {
-
+        paraindex = int.Parse(GetComponent<InputField>().text);
+        card.angleSelected[paraindex] = angletoggle.isOn;
+        
     }
     public void TargetSelected()
     {
@@ -160,16 +161,13 @@ public class CardMaker : MonoBehaviour
     {
 
     }
+    public void Save()
+    {
+        card.cardname = 
+        JsonUtility.ToJson(card);
+    }
     public void DebugArea(int[,] areaID)
     {
-        for (int i = 0; i< areaID.GetLength(0); i++)
-        {
-            string str = "";
-            for (int j = 0; j < areaID.GetLength(1); j++)
-            {
-                str +="\t"+ areaID[i, j];
-            }
-            Debug.Log(str);
-        }
+        
     }
 }

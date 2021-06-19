@@ -288,9 +288,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.7966436, y: -1.2004296, z: -0.27551967}
+    m_Target: {x: -1.4609978, y: 0.063640565, z: -3.2689626}
     speed: 2
-    m_Value: {x: -1.2642751, y: -0.88656175, z: -0.24699107}
+    m_Value: {x: -1.3160027, y: 0.03326066, z: -3.2441406}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -340,9 +340,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.569286
+    m_Target: 6.593829
     speed: 2
-    m_Value: 7.925954
+    m_Value: 6.904533
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -571,23 +571,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 5efbfffffa3a0000
+      m_SelectedIDs: b83b0000
+      m_LastClickedID: 15288
+      m_ExpandedIDs: 5efbffffe6380000663900000e3a0000ea3a0000fa3a0000223b00003c3b0000e43b00002c3c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: CardSeter
-        m_OriginalName: CardSeter
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 15288
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 6}
       m_SearchString: 
@@ -619,9 +619,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 381
-    y: 531
+    y: 567
     width: 961
-    height: 508
+    height: 472
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -647,8 +647,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5e3d0000
-    m_LastClickedID: 15710
+    m_SelectedIDs: 603d0000
+    m_LastClickedID: 15712
     m_ExpandedIDs: 000000004c3d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -702,8 +702,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 20350000
-    m_LastClickedInstanceID: 13600
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300008838000044380000ca3400008c3200001a3e000018390000a8430000a6430000a4430000c2430000c0430000bc430000be430000727c0000827c00007c7c00006c7c0000a2500000b0500000c25000000c440000d443000044450000004d00006a4c00004c420000a24f00009e4300009e5c0000a45c0000b65c0000b05c0000aa5c0000bc5c0000ce5c0000c25c0000c85c0000845a0000965a00009c5a0000b45a0000ae5a0000a25a0000a85a00008a5a00008e4d000092aa0100e44a0000e24a0000004500005c510000ca480000583c0000e6d5ffff144c0000c256000000000000b43100008c310000d83600000c3400009a370000d0470000
     m_RenameOverlay:

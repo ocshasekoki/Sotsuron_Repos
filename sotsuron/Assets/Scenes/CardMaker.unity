@@ -2997,8 +2997,7 @@ MonoBehaviour:
   paramlength: 0
   param: 
   subparam: 
-  areaID: 
-  areaSelected: 
+  angleSelected: 
   element: 0
   con: 
   type: 
@@ -8391,15 +8390,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1598905f07e5340b461cea13b7692a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardnameIF: {fileID: 1922635586}
-  paramlengthIF: {fileID: 804318552}
-  elementDD: {fileID: 1692042107}
+  cardnameIF: {fileID: 1955852644}
+  paramlengthDD: {fileID: 1639143043}
+  elementDD: {fileID: 1108641576}
   param: {fileID: 1766254673}
   subParam: {fileID: 1578210722}
   techType: {fileID: 17024021}
   condition: {fileID: 1144821038}
   target: {fileID: 452325681}
-  angleDD: {fileID: 914001656}
+  angleDD: {fileID: 914001658}
   angletoggle: {fileID: 0}
   inputPanel: {fileID: 1836937864140125285, guid: 90535d7d92802e744b2144449f1db6ec,
     type: 3}
