@@ -5,17 +5,111 @@ using UnityEngine;
 [Serializable]
 public class Card :MonoBehaviour
 {
-    public string cardname;     //カードの名前
-    public int paramlength;     //カードの名前
-    public int[] param;         //基礎数値
-    public int[] subparam;      //判定数値(default 0)
-    public int[,] areaID = new int[3,6];       //エリアID
-    public bool[] angleSelected;//trueの時エリア指定 falseの時前方にする
-    public Elements element;  //属性
-    public Conditions[] con;    //状態
-    public TechType[] type;     //技のタイプ
-    public Targets[] target;    //ターゲット
+    [SerializeField] private string cardname;       //カードの名前
+    [SerializeField] private int paramlength;       //カードの名前
+    [SerializeField] private int[] param;           //基礎数値
+    [SerializeField] private int[] subparam;        //判定数値(default 0)
+    [SerializeField] private AreaID[] areaID;       //エリアID
+    [SerializeField] private bool[] angleSelected;  //trueの時エリア指定 falseの時前方にする
+    [SerializeField] private Elements element;      //属性
+    [SerializeField] private Conditions[] con;      //状態
+    [SerializeField] private TechType[] type;       //技のタイプ
+    [SerializeField] private Targets[] target;      //ターゲット
 
+    public void SetcardName(string name)
+    {
+        cardname = name;
+    }
+    public string GetcardName()
+    {
+        return cardname;
+    }
+    public void SetparamLength(int length)
+    {
+        paramlength = length;
+    }
+    public int GetparamLength()
+    {
+        return paramlength;
+    }
+    public void Setparam(int index,int param)
+    {
+        this.param[index] = param;
+    }
+    public int Getparam(int index)
+    {
+        return param[index];
+    }
+    public void Setsubparam(int index, int param)
+    {
+        this.subparam[index] = param;
+    }
+    public int Getsubparam(int index)
+    {
+        return subparam[index];
+    }
+    public void SetareaID(int index,int[] param)
+    {
+        areaID[index].SetID(param);
+    }
+    public int[] GetareaID(int index)
+    {
+        return areaID[index].GetID();
+    }
+    public void Setangle(int index, bool angle)
+    {
+        angleSelected[index] = angle;
+    }
+    public bool Getangle(int index)
+    {
+        return angleSelected[index];
+    }
+    public void SetElement(int param)
+    {
+        element = (Elements)param;
+    }
+    public Elements GetElement()
+    {
+        return element;
+    }
+    public void SetCondition(int index,int param)
+    {
+        con[index] = (Conditions)param;
+    }
+    public Conditions GetCondition(int index)
+    {
+        return con[index];
+    }
+    public void SetTechtype(int index, int param)
+    {
+        type[index] = (TechType)param;
+    }
+    public TechType GetTechtype(int index)
+    {
+        return type[index];
+    }
+    public void SetTarget(int index, int param)
+    {
+        target[index] = (Targets)param;
+    }
+    public Targets GetTarget(int index)
+    {
+        return target[index];
+    }
+    public void Setlength(int length)
+    {
+        param = new int[length];
+        subparam = new int[length];
+        areaID = new AreaID[length];
+        type = new TechType[length];
+        con = new Conditions[length];
+        target = new Targets[length];
+        angleSelected = new bool[length];
+    }
+    public string GetJson()
+    {
+        return JsonUtility.ToJson(this,true);
+    }
     public void Dump()
     {
         Debug.Log("名前：" +cardname);
@@ -34,12 +128,29 @@ public class Card :MonoBehaviour
             Debug.Log("ターゲット：" + target[i]);
             Debug.Log("＊＊＊＊＊＊＊＊エリア＊＊＊＊＊＊＊＊");
             string str = "";
-            for (int j = 0; j < areaID.GetLength(1); j++)
+            int[] id = areaID[i].GetID();
+            for (int j = 0; j < 3; j++)
             {
-                str += "  " + areaID[i, j];
+                for (int k = 0; k < 6; k++)
+                {
+                    str += "  " + id[j * 6 + k];
+                }
             }
             Debug.Log(str);
             Debug.Log("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
+        }
+    }
+    [Serializable]
+    public class AreaID
+    {
+        [SerializeField] private int[] ID;
+        public void SetID(int[] id)
+        {
+            ID = id;
+        }
+        public int[] GetID()
+        {
+            return ID;
         }
     }
 }

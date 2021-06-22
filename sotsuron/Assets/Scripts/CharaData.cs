@@ -7,23 +7,23 @@ namespace Data
     public class CharaData : MonoBehaviour
     {
         //HP
-        public int hp;
+        [SerializeField] private int hp;
         //攻撃力
-        public int atk;
+        [SerializeField] private int atk;
         //防御力
-        public int df;
+        [SerializeField] private int df;
         //スピード
-        public int spd;
+        [SerializeField] private int spd;
         //キャラクタタイプ
-        public CharaType ctype;
+        [SerializeField] private CharaType ctype;
         //キャラクタの状態
-        public Conditions con;
+        [SerializeField] private Conditions con;
         //デッキ
-        public Decks dec;
+        [SerializeField] private Decks dec;
         //手札
-        public Card[] hands;
+        [SerializeField] private Card[] hands;
         //属性
-        public Elements element;
+        [SerializeField] private Elements element;
 
     }
     [Serializable]
