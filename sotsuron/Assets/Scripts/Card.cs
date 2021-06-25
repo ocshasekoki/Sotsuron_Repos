@@ -101,6 +101,10 @@ public class Card :MonoBehaviour
         param = new int[length];
         subparam = new int[length];
         areaID = new AreaID[length];
+        for(int i = 0;i < length; i++)
+        {
+            areaID[i] = new AreaID();
+        }
         type = new TechType[length];
         con = new Conditions[length];
         target = new Targets[length];

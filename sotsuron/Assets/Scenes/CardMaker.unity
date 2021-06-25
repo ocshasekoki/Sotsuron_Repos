@@ -4630,7 +4630,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866251161}
+        m_MethodName: AreaChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &914001659
 MonoBehaviour:
@@ -8859,44 +8870,7 @@ MonoBehaviour:
   inputPanel: {fileID: 1836937864140125285, guid: 90535d7d92802e744b2144449f1db6ec,
     type: 3}
   DDPanel: {fileID: 9093621735102202326, guid: f0c61a97e3edcc740b0a310add728cc9, type: 3}
-  techTypelist:
-  - a
-  - w
-  - s
-  conditionlist:
-  - a
-  - b
-  - c
-  - d
-  - e
-  - f
-  - g
-  - h
-  - i
-  - j
-  targetlist:
-  - enemy
-  - allies
-  arealist: []
-  Areas:
-  - {fileID: 1882646333}
-  - {fileID: 1966592369}
-  - {fileID: 455049709}
-  - {fileID: 230924938}
-  - {fileID: 671945352}
-  - {fileID: 1750001275}
-  - {fileID: 1807026801}
-  - {fileID: 1229763274}
-  - {fileID: 480777915}
-  - {fileID: 1661814435}
-  - {fileID: 335598169}
-  - {fileID: 968905785}
-  - {fileID: 1192911831}
-  - {fileID: 940159313}
-  - {fileID: 2040129338}
-  - {fileID: 1761755693}
-  - {fileID: 546728860}
-  - {fileID: 1393804350}
+  areas: []
 --- !u!4 &1866251162
 Transform:
   m_ObjectHideFlags: 0
