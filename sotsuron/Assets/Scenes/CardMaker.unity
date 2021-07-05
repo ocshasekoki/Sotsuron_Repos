@@ -5169,7 +5169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: FIRE
 --- !u!222 &1108641577
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7448,11 +7448,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: 1
+    - m_Text: FIRE
       m_Image: {fileID: 0}
-    - m_Text: 2
+    - m_Text: THUNDER
       m_Image: {fileID: 0}
-    - m_Text: 3
+    - m_Text: WATER
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8870,7 +8870,25 @@ MonoBehaviour:
   inputPanel: {fileID: 1836937864140125285, guid: 90535d7d92802e744b2144449f1db6ec,
     type: 3}
   DDPanel: {fileID: 9093621735102202326, guid: f0c61a97e3edcc740b0a310add728cc9, type: 3}
-  areas: []
+  areas:
+  - {fileID: 1882646333}
+  - {fileID: 1966592369}
+  - {fileID: 455049709}
+  - {fileID: 230924938}
+  - {fileID: 671945352}
+  - {fileID: 1750001275}
+  - {fileID: 1807026801}
+  - {fileID: 1229763274}
+  - {fileID: 480777915}
+  - {fileID: 1661814435}
+  - {fileID: 335598169}
+  - {fileID: 968905785}
+  - {fileID: 1192911831}
+  - {fileID: 940159313}
+  - {fileID: 2040129338}
+  - {fileID: 1761755693}
+  - {fileID: 546728860}
+  - {fileID: 1393804350}
 --- !u!4 &1866251162
 Transform:
   m_ObjectHideFlags: 0

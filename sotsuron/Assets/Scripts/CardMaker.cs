@@ -167,7 +167,7 @@ public class CardMaker : MonoBehaviour
     }
     public static void OutputJson(string name, string str)
     {
-        StreamWriter writer = new StreamWriter(Application.dataPath + "/card/" + name + ".json", false);
+        StreamWriter writer = new StreamWriter(Application.streamingAssetsPath + "/card/" + name + ".json", false);
         writer.WriteLine(str);
         writer.Flush();
         writer.Close();

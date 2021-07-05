@@ -135,19 +135,20 @@ public class Card :MonoBehaviour
             int[] id = areaID[i].GetID();
             for (int j = 0; j < 3; j++)
             {
+                str = ""; 
                 for (int k = 0; k < 6; k++)
                 {
                     str += "  " + id[j * 6 + k];
                 }
+                Debug.Log(str);
             }
-            Debug.Log(str);
             Debug.Log("＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊");
         }
     }
     [Serializable]
     public class AreaID
     {
-        [SerializeField] private int[] ID;
+        [SerializeField] private int[] ID = new int[18];
         public void SetID(int[] id)
         {
             ID = id;
