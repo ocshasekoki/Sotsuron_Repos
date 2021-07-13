@@ -6,6 +6,7 @@ namespace Data
     [Serializable]
     public class CharaData : MonoBehaviour
     {
+        [SerializeField] private string charaname;
         //HP
         [SerializeField] private int hp;
         //攻撃力
@@ -24,7 +25,10 @@ namespace Data
         [SerializeField] private List<Card> hands = new List<Card>();
         //属性
         [SerializeField] private Elements element;
-
+        public void Setname(string _name)
+        {
+            charaname = _name;
+        }
         public void SetHp(int _hp)
         {
             hp = _hp;
@@ -53,6 +57,10 @@ namespace Data
         {
             dec = deck;
         }
+        public List<Card> GetDeck()
+        {
+            return dec.GetDeck();
+        }
         public void SetElement(Elements e)
         {
             element = e;
@@ -74,6 +82,19 @@ namespace Data
                 index = UnityEngine.Random.Range(0, deck.Count-1);
                 hands.Add(deck[index]);
                 dec.RemoveCard(index);
+            }
+        }
+
+        public void Dump()
+        {
+            Debug.Log("HP:" + hp+" ATK:" + atk+" DF:" + df+ " SPD:" + spd+" キャラタイプ:" + ctype+" 状態:" + con+" 属性:" + element);
+            foreach(Card c in dec.GetDeck())
+            {
+                c.Dump();
+            }
+            foreach (Card c in hands)
+            {
+                c.Dump();
             }
         }
     }

@@ -12,7 +12,7 @@ public class CardButton : MonoBehaviour
             Destroy(child.gameObject);
         }
         string name = transform.Find("Text").GetComponent<Text>().text;
-        card = LoadFile.StatusLoad(name + ".json");
+        card = LoadFile.CardStatusLoad(name + ".json");
         GameObject.Find("DeckSystem").GetComponent<DeckCreate>().SetText(card);
 
     }

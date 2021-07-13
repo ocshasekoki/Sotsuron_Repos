@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class TextData : MonoBehaviour
 {
-    [SerializeField] private Text paramText;
-    [SerializeField] private Text subparamText;
-    [SerializeField] private Text targetText;
-    [SerializeField] private Text typeText;
-    [SerializeField] private Text conText;
-    [SerializeField] private Toggle angle;
-    [SerializeField] private Image[] areas;
+    [SerializeField] private Text paramText =null;
+    [SerializeField] private Text subparamText = null;
+    [SerializeField] private Text targetText = null;
+    [SerializeField] private Text typeText = null;
+    [SerializeField] private Text conText = null;
+    [SerializeField] private Toggle angle = null;
+    [SerializeField] private Image[] areas = null;
     public void SetText(Card card,int index)
     {
         paramText.text = card.Getparam(index).ToString();

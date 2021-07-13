@@ -1,0 +1,13 @@
+{
+  "atk": 0,
+  "con": 0,
+  "ctype": 0,
+  "dec": {
+    "cards": []
+  },
+  "df": 0,
+  "element": 0,
+  "hands": [],
+  "hp": 0,
+  "spd": 0
+}
