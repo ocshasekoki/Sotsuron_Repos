@@ -16,7 +16,7 @@ public class LoadFile
     public static Card CardStatusLoad(string cardname)
     {
         Card card = new Card();
-        string json = File.ReadAllText(Application.streamingAssetsPath + "/cards/" + cardname + ".json");
+        string json = File.ReadAllText(Application.streamingAssetsPath + "/cards/" + cardname);
         JsonUtility.FromJsonOverwrite(json,card);
         card.Dump();
         return card;

@@ -897,6 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardlist: {fileID: 809456918}
+  decklist: {fileID: 0}
   cardbtnpref: {fileID: 2589594977221893798, guid: 872baa202e2f6a74cb636a0c756f64a1,
     type: 3}
   nameText: {fileID: 1752535573}
