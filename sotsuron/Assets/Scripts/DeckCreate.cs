@@ -1,5 +1,4 @@
 ﻿using Data;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +15,7 @@ public class DeckCreate : MonoBehaviour
 
     private void Start()
     {
-        FileInfo[] info = LoadFile.FileListLoad("*");
+        FileInfo[] info = FileIO.LoadFile.FileListLoad("*");
         GameObject obj;
         string charactername = PlayerPrefs.GetString("CharaName");
         foreach (FileInfo f in info)
@@ -24,20 +23,20 @@ public class DeckCreate : MonoBehaviour
             obj = Instantiate(cardbtnpref, cardlist.transform);
             obj.transform.Find("Text").GetComponent<Text>().text = f.Name.Substring(0, f.Name.IndexOf("."));
         }
-        List<Card> cardList;
-        charactername = "111";
+        CharaData data;
         try
         {
-            cardList = LoadFile.DeckStatusLoad(charactername);
+            data = FileIO.LoadFile.CharacterStatusLoad(charactername);
+            Debug.Log("ロード");
         }
         catch
         {
-            cardList = new List<Card>();
+            data = CharaCreate();
         }
-        foreach (Card c in cardList)
+        foreach (string s in data.GetDeck())
         {
             obj = Instantiate(cardbtnpref, decklist.transform);
-            obj.transform.Find("Text").GetComponent<Text>().text = c.name;
+            obj.transform.Find("Text").GetComponent<Text>().text = s;
         }
     }
 
@@ -50,5 +49,22 @@ public class DeckCreate : MonoBehaviour
             GameObject obj = Instantiate(DataPref, DataParents.transform);
             obj.GetComponent<TextData>().SetText(card, i);
         }
+    }
+    private CharaData CharaCreate()
+    {
+        CharaData c = new CharaData();
+        c.SetATK(100);
+        c.SetDF(21);
+        c.SetHp(111);
+        c.SetSPD(1);
+        c.SetCtype(CharaType.ATTACKER);
+        c.Setname("222");
+        c.SetElement(Elements.FIRE);
+        c.ClearDeck();
+        c.AddDeck("aaa");
+        c.AddDeck("bbb");
+        c.ClearHands();
+        c.AddHands(FileIO.LoadFile.CardStatusLoad("aaa"));
+        return c;
     }
 }

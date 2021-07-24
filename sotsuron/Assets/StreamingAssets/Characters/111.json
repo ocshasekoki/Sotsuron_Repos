@@ -2,9 +2,7 @@
   "atk": 0,
   "con": 0,
   "ctype": 0,
-  "dec": {
-    "cards": []
-  },
+  "dec": ["aaa","bbb","bbb"],
   "df": 0,
   "element": 0,
   "hands": [],

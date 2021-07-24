@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Data
 {
     [Serializable]
-    public class CharaData : MonoBehaviour
+    public struct CharaData
     {
         [SerializeField] private string charaname;
         //HP
@@ -20,9 +20,10 @@ namespace Data
         //キャラクタの状態
         [SerializeField] private Conditions con;
         //デッキ
-        [SerializeField] private Decks dec;
+        //[SerializeField] private Decks dec;
+        [SerializeField] private List<string> dec;
         //手札
-        [SerializeField] private List<Card> hands = new List<Card>();
+        [SerializeField] private List<Card> hands ;
         //属性
         [SerializeField] private Elements element;
         public void Setname(string _name)
@@ -53,6 +54,37 @@ namespace Data
         {
             con = _con;
         }
+
+        public void AddDeck(string cardId)
+        {
+            dec.Add(cardId);
+        }
+        public void ClearDeck()
+        {
+            dec = new List<string>();
+        }
+
+        public void RemoveDeck(string cardId)
+        {
+            dec.Remove(cardId);
+        }
+
+        public List<string> GetDeck()
+        {
+            return dec;
+        }
+
+        public Card Drow()
+        {
+            int index = UnityEngine.Random.Range(0, dec.Count);
+            string cardname = dec[index];
+            dec.RemoveAt(index);
+            Card card = FileIO.LoadFile.CardStatusLoad(cardname);
+            hands.Add(card);
+            return card;
+        }
+
+        /*
         public void SetDeck(Decks deck)
         {
             dec = deck;
@@ -61,9 +93,14 @@ namespace Data
         {
             return dec.GetDeck();
         }
+        */
         public void SetElement(Elements e)
         {
             element = e;
+        }
+        public void ClearHands()
+        {
+            hands = new List<Card>();
         }
         public void AddHands(Card c)
         {
@@ -73,6 +110,7 @@ namespace Data
         {
             hands.Remove(c);
         }
+        /*
         public void DrowCard(int number)
         {
             int index;
@@ -84,13 +122,13 @@ namespace Data
                 dec.RemoveCard(index);
             }
         }
-
+        */
         public void Dump()
         {
             Debug.Log("HP:" + hp+" ATK:" + atk+" DF:" + df+ " SPD:" + spd+" キャラタイプ:" + ctype+" 状態:" + con+" 属性:" + element);
-            foreach(Card c in dec.GetDeck())
+            foreach(string s in dec)
             {
-                c.Dump();
+                Debug.Log("カード名：" + s);
             }
             foreach (Card c in hands)
             {
@@ -98,6 +136,7 @@ namespace Data
             }
         }
     }
+
     [Serializable]
     public class Decks
     {
